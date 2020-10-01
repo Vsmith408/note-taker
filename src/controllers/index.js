@@ -1,7 +1,23 @@
-const getNotes = (req, res) => {}
+const db = require('../db')
 
-const createNote = (req, res) => {}
+const getNotes = (req, res) => {
+  const data = db.getNotes()
+  res.json(data)
+}
 
-const deleteNote = (req, res) => {}
+const createNote = (req, res) => {
+  const { title, text } = req.body
+  const newNote = db.createNote(title, text)
+  res.json(newNote)
+}
+
+const deleteNote = (req, res) => {
+  let { id } = req.params
+  db.deleteNote(id)
+
+  res.json({
+    success: true,
+  })
+}
 
 module.exports = { getNotes, createNote, deleteNote }

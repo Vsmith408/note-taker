@@ -19,6 +19,8 @@ app.delete('/api/notes/:id', controllers.deleteNote)
 
 // ==================================================
 // Static routes
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
+
 app.get('/notes', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 })
