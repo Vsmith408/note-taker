@@ -1,6 +1,6 @@
 const db = require('../db')
 
-const getNotes = (req, res) => {
+const getNotes = (_req, res) => {
   const data = db.getNotes()
   res.json(data)
 }

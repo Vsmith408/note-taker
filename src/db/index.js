@@ -1,7 +1,11 @@
 const fs = require('fs')
-const { get } = require('http')
+
 const { uuid } = require('uuidv4')
 
+/**
+ * reading the db.json file
+ * returning a parsed version of the data - a JS object
+ */
 const getNotes = () => {
   let data = fs.readFileSync(__dirname + '/db.json')
   return JSON.parse(data)
@@ -26,6 +30,10 @@ const createNote = (title, text) => {
   return note
 }
 
+/**
+ * delete note from DB
+ * @param {string} id
+ */
 const deleteNote = (id) => {
   let notes = getNotes()
   let newNotes = notes.filter((note) => {
